@@ -1,0 +1,262 @@
+.main-highlight {
+  border-radius: 40px 40px 0 0;
+}
+
+.conf-layers.conf-filter {
+  z-index: 3;
+}
+
+div.tc-container.water-filtration-details-div .tc-element-container {
+  display: none;
+}
+
+div.tc-container.water-filtration-details-div .tc-element-inner-wrap {
+  background: #cae7f6;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+div.tc-container.water-filtration-details-div p {
+  font-size: 16px;
+}
+
+/* Mobile Dial Selector */
+
+.mobile-featured {
+  width: 100%;
+  margin: auto;
+  opacity: 1;
+  transition: width 0.2s, opacity 0.2s;
+  z-index: 1;
+  position: relative;
+}
+
+.dial-flex-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  padding: 10px 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background-color: white;
+}
+
+.dial-base-wrapper {
+  flex: 0 1 69%;
+  position: relative;
+}
+
+.dial-base-wrapper img {
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dial-menus-wrapper {
+  flex: 0 0 0%;
+  font-size: 16px;
+  padding: 0;
+  z-index: 9999;
+  color: #FFFFFF;
+  margin: 0;
+  z-index: 9999;
+}
+
+.dial-menus {
+  margin: 0 0 5px 0;
+  padding: 5px;
+  background: #66676f;
+  border-radius: 10px;
+  color: #000;
+}
+
+@media (max-width:480px) {
+  .wp-block-lazyblock-woocommerce-single-product-price {
+    display: none;
+  }
+
+  .dial-menus-wrapper {
+    font-size: 13px !important;
+  }
+
+  .dial-menus select {
+    font-size: 13px !important;
+  }
+
+  /* .price {
+    margin: 0 10px 10px 10px;
+    padding: 0 0 5px 0;
+    font-size: 27px;
+  } */
+}
+
+/*Dial Sel swiper gallery*/
+.swiper-mobile-div {
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: auto !important;
+}
+
+/**/
+div.custom-conf-main {
+  /* line-height: normal; */
+  /* background: #82848a; */
+}
+
+div.custom-conf-main>select {
+  margin: 5px 0;
+}
+
+#conf-grid>.conf-container {
+  flex: 0 1 83%;
+}
+
+#conf-grid>.conf-menu-container {
+  flex: 0 1 30%;
+}
+
+/* Vertical half */
+.vertical-one-half {
+  height: 48vh;
+  margin: 0 0 20px 0;
+}
+
+.vertical-one-half>.woocommerce-product-gallery {
+  max-width: 48vh;
+  margin: auto;
+}
+
+#conf-grid {
+  display: flex;
+  width: 100%;
+}
+
+/*@media (max-width: 1440px) {
+	}
+
+	@media (min-width: 1441px) {
+		#conf-grid {
+			display: flex;
+			width: 100%;
+		}
+	}*/
+@media (max-width: 768px) {
+  .wp-block-lazyblock-woocommerce-single-product-price {
+    top: 86vw !important;
+  }
+
+  .woocommerce-product-gallery__wrapper {
+    margin: 0 0 0 0;
+  }
+}
+
+/* Dial Selector */
+
+.woocommerce-product-gallery__image {
+  position: relative;
+  z-index: 10;
+}
+
+/* #liner {
+  opacity: 1;
+} */
+
+/* @media (max-width:959px) {
+  #liner {
+    opacity: 1;
+  }
+} */
+
+.conf-menu-container {
+  font-size: 16px;
+  /* border-right: 2px solid #f1f1f1; */
+  /* background: #fbfbfb; */
+  /*border: 1px solid rgba(0, 0, 0, 0.035);*/
+  /*background-image: linear-gradient(to top, rgba(0, 0, 0, 0.01) 0, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.01) 100%);*/
+  /* padding-right: 0.5em; */
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: #FFFFFF;
+  font-weight: 500;
+  /* margin: 0 0 0 10px; */
+}
+
+.conf-menu-container .custom-conf-main select {
+  color: #000;
+}
+
+/* .conf-menu-container h4 {
+  margin: 10px 0;
+  font-size: 16px;
+  text-align: center;
+  color: #666666 !important;
+  font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+} */
+.custom-conf-main {
+  margin: 5px 4px;
+  padding: 4px;
+  border-radius: 6px;
+  background: #686c79;
+}
+
+#menu-box-service {
+  background: #eba400;
+}
+
+.conf-container {
+  position: relative;
+  /*max-width: 600px;*/
+  /*height: 400px;*/
+}
+
+.conf-container img {
+  max-width: 50vh;
+  height: auto;
+  /* margin: auto; */
+}
+
+.conf-base {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+}
+
+.conf-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+}
+
+.error-notice {
+  z-index: 2;
+  color: #666666 !important;
+  background: #ffffff;
+  padding: 0 5px;
+  font-size: 14px;
+  border: 3px solid #ff0011;
+  border-radius: 10px;
+  hyphens: auto;
+  margin: 0;
+}
+
+/* Media fix*/
+
+@media (min-width:1280px) and (max-width:1440px){
+  .woocommerce-product-gallery__image img {
+    max-width: 75%;
+    margin: auto;
+  }
+  #liner {
+    max-width: 80%;
+  }
+}

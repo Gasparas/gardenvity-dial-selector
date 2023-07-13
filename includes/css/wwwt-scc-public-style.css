@@ -1,0 +1,11 @@
+.single-product .woocommerce_cart_pdf_button{
+	display: none;
+}
+.disabled-section {
+	opacity: 0.3;
+	pointer-events: none;
+}
+
+.dial-selector-container {
+	background: #FFFFFF;
+}
