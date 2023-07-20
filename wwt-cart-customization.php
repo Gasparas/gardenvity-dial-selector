@@ -3,15 +3,18 @@
  * Plugin Name: Gardenvity Dial Selector & PDF download
  * Plugin URI:
  * Description: Gardenvity customization
- * Version: 1.0.7
- * Author: World Web
- * Author URI: http://www.worldwebtechnology.com/
+ * Version: 1.0.9
+ * Author: Gaspar Aleksa
+ * Author URI: 
  * Text Domain: wwtscc
  * Domain Path: languages
  *
  * @package WWT Shop cart page customization
  * @category Core
- * @author World Web
+ * @author Gaspar Aleksa
+ * 
+ * Changes:
+ * 1.0.8: Fiberglass universal config
  */
 
 // Exit if accessed directly
@@ -40,7 +43,7 @@ function load_admin_core_code()
     function render_custom_meta_box($post)
     {
       // Define an array of custom field names and labels
-      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2');
+      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default');
 
       // Loop through the fields and display them
       foreach ($fields as $field_name) {
@@ -60,7 +63,7 @@ function load_admin_core_code()
     function save_custom_meta_box($post)
     {
       // Define the array of custom field names
-      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2');
+      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default');
 
       // Loop through the fields and save their values
       foreach ($fields as $field_name) {

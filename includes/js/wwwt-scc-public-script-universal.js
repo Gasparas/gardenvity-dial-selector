@@ -71,11 +71,10 @@ jQuery(document).ready(function ($) {
   **
   */
 
-  let claddingTypesUl = document.querySelectorAll('.cladding-type-ul');
-  let linerColorsUl = document.querySelectorAll('.liner-color-ul');
+
 
   let insertColorMemory = {
-    Current: 'color-2'
+    Current: 'color-' + php.linerColorStart
   };
 
   let hydroJetsPatternGroup = {
@@ -95,7 +94,8 @@ jQuery(document).ready(function ($) {
     // Outer leds
     0: 0,
     airJets: 0,
-    hydroJets: 0
+    hydroJets: 0,
+    airPlusHydroJets: 1
   };
   let restrictedPos = {
     service: ['none'],
@@ -109,19 +109,26 @@ jQuery(document).ready(function ($) {
   let restrictedFilterPos = ['1', '11'];
   let heaterOrientation = 'center';
 
+  // Init Service door
+  if (php.claddingTypes == 0) {
+    ToggleServiceDoor();
+    ToggleMenuContainer();
+  }
+
   /*
   **
   ** Buttons
   **
   */
+  let claddingTypesUl = document.querySelectorAll('.cladding-type-ul li label');
+  let linerColorsUl = document.querySelectorAll('.liner-color-ul');
+
   function CladdingAndInsertSwitcher(woodColor, insertColor) {
     SwitchInsertLayer(insertColor);
     insertColorMemory[woodColor] = insertColor;
   }
 
-  function restoreSlectedButton(claddingIndex, el) {
-    // let linerColorsUl = document.querySelectorAll('.liner-color-ul');
-
+  function restoreSlectedButton(index, element) {
     var insertColors = [];
     var keyName = 'color-';
     var count = php.linerColors;
@@ -131,28 +138,45 @@ jQuery(document).ready(function ($) {
       insertColors.push(key);
     }
 
-    $(linerColorsUl[claddingIndex].querySelectorAll('li')[insertColors.indexOf(el)]).find('label').trigger('click');
+    const current = insertColors.indexOf(insertColorMemory.Current);
+
+    $(linerColorsUl[index].querySelectorAll('li')[current]).find('label').trigger('click');
   }
 
   // Cladding
-  claddingTypesUl.forEach(element => {
-    for (let i = 0; i < php.claddingTypes; i++) {
-      // buttons = ;
-      element.querySelectorAll('li')[i].onchange = function () {
-        restoreSlectedButton(i, insertColorMemory.Current);
-        SwitchInsertLayer(insertColorMemory.Current);
-      }
-    }    
+  claddingTypesUl.forEach((element, index) => {
+    $(element).on('change', function () {
+      restoreSlectedButton(index);
+    });
   });
 
   // Liners
   linerColorsUl.forEach(element => {
     for (let i = 0; i < php.linerColors; i++) {
       // buttons = ;
-      element.querySelectorAll('li')[i].onchange = function () {
-        CladdingAndInsertSwitcher('Current', ('color-' + (i + 1)));
-      }
+      $(element.querySelectorAll('li')[i]).on('change', function () {
+        CladdingAndInsertSwitcher('Current', 'color-' + (i + 1));
+      });
     }
+  });
+
+  // Air Plus Hydro Jets
+  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(0).change(function () {
+    SwitchAirPlusHydroJetsLayer('0');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
+  });
+
+  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(1).change(function () {
+    SwitchAirPlusHydroJetsLayer('1');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
+  });
+
+  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(2).change(function () {
+    SwitchAirPlusHydroJetsLayer('2');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
   });
 
 
@@ -258,12 +282,6 @@ jQuery(document).ready(function ($) {
     ToggleMenuContainer();
     // checkFilterRestriction();
   });
-
-  // Sandfilter valves
-  $('.sandfilter_valves_checkboxes-div ul li').eq(0).change(function () {
-    $('.water_filter_checkboxes-div').toggleClass("disabled-section");
-  });
-
 
   /*
   **
@@ -409,6 +427,14 @@ jQuery(document).ready(function ($) {
     } else {
       activeServiceDoorSystems.airJets = 1;
     }
+  }
+
+  function SwitchAirPlusHydroJetsLayer(group) {
+    // write DOM
+    const img = document.querySelector('.conf-air-jets');
+    img.src = "/wp-content/uploads/" + php.folderName + "/air-jets-" + group + ".svg";
+    // write ServiceDoor toggle
+    activeServiceDoorSystems.airPlusHydroJets = 1;
   }
 
   function SwitchHydroJetsLayer(group, pattern) {

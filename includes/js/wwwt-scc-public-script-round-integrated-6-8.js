@@ -236,11 +236,6 @@ jQuery(document).ready(function($) {
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
-  
-  // Sandfilter valves
-  $('.sandfilter_valves_checkboxes-div ul li').eq(0).change(function () {
-    $('.water_filter_checkboxes-div').toggleClass("disabled-section");
-  });
 
   // Menus
   $('select[name="conf-service"]').change(function() {
