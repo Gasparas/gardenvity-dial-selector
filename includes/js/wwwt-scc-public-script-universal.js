@@ -71,8 +71,6 @@ jQuery(document).ready(function ($) {
   **
   */
 
-
-
   let insertColorMemory = {
     Current: 'color-' + php.linerColorStart
   };
@@ -82,20 +80,17 @@ jQuery(document).ready(function ($) {
     2: 0
   };
   let activeLeds = {
-    1: 0,
-    2: 0,
-    // Outer leds
-    0: 0
+    'led-slot-1': 0,
+    'led-slot-2': 0,
+    'led-slot-3': 0
   };
   let activeServiceDoorSystems = {
-    // Underwater leds
-    1: 0,
-    10: 0,
-    // Outer leds
-    0: 0,
+    'led-slot-1': 0,
+    'led-slot-2': 0,
+    'led-slot-3': 0,
     airJets: 0,
     hydroJets: 0,
-    airPlusHydroJets: 1
+    airPlusHydroJets: 0
   };
   let restrictedPos = {
     service: ['none'],
@@ -109,8 +104,9 @@ jQuery(document).ready(function ($) {
   let restrictedFilterPos = ['1', '11'];
   let heaterOrientation = 'center';
 
-  // Init Service door
-  if (php.claddingTypes == 0) {
+  // Init Service door for a fiberglass model
+  if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
+    activeServiceDoorSystems.airPlusHydroJets = 1;
     ToggleServiceDoor();
     ToggleMenuContainer();
   }
@@ -185,6 +181,7 @@ jQuery(document).ready(function ($) {
     SwitchAirJetsLayer('0');
     ToggleServiceDoor();
     ToggleMenuContainer();
+    // console.log(this);
   });
 
   $('.air_jets_checkboxes-div ul li').eq(1).change(function () {
@@ -236,17 +233,17 @@ jQuery(document).ready(function ($) {
 
   // LEDs
   $('.leds_checkboxes-div ul li').eq(0).change(function () {
-    SwitchLedLayer(1);
+    SwitchLedLayer('led-slot-1');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
   $('.leds_checkboxes-div ul li').eq(1).change(function () {
-    SwitchLedLayer(2);
+    SwitchLedLayer('led-slot-2');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
   $('.leds_checkboxes-div ul li').eq(2).change(function () {
-    SwitchLedLayer(0);
+    SwitchLedLayer('led-slot-3');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
@@ -375,6 +372,7 @@ jQuery(document).ready(function ($) {
 
   function ToggleServiceDoor() {
     activeSystems = Object.values(activeServiceDoorSystems);
+    console.log(activeSystems);
 
     function checkActive(slot) {
       return slot > 0;
@@ -423,7 +421,7 @@ jQuery(document).ready(function ($) {
     img.src = "/wp-content/uploads/" + php.folderName + "/air-jets-" + group + ".svg";
     // write ServiceDoor toggle
     if (group === '0') {
-      activeServiceDoorSystems.airJets = '0';
+      activeServiceDoorSystems.airJets = 0;
     } else {
       activeServiceDoorSystems.airJets = 1;
     }
@@ -443,7 +441,7 @@ jQuery(document).ready(function ($) {
     img.src = "/wp-content/uploads/" + php.folderName + "/hydro-jets-" + group + "-" + pattern + ".svg";
     // write ServiceDoor toggle
     if (group === '0') {
-      activeServiceDoorSystems.hydroJets = '0';
+      activeServiceDoorSystems.hydroJets = 0;
     } else {
       activeServiceDoorSystems.hydroJets = 1;
     }
@@ -451,14 +449,14 @@ jQuery(document).ready(function ($) {
 
   function SwitchLedLayer(type) {
     if (activeLeds[type] === 0) {
-      const img = document.querySelector('.conf-led-' + type);
-      img.src = "/wp-content/uploads/" + php.folderName + "/led-" + type + ".svg";
+      const img = document.querySelector('.conf-' + type);
+      img.src = "/wp-content/uploads/" + php.folderName + "/" + type + ".svg";
       activeLeds[type] = 1;
       activeServiceDoorSystems[type] = 1;
 
     } else if (activeLeds[type] === 1) {
-      const img = document.querySelector('.conf-led-' + type);
-      img.src = "/wp-content/uploads/" + php.folderName + "/led-0.svg";
+      const img = document.querySelector('.conf-' + type);
+      img.src = "/wp-content/uploads/" + php.folderName + "/led-none.svg";
       activeLeds[type] = 0;
       activeServiceDoorSystems[type] = 0;
     }
