@@ -242,23 +242,23 @@ jQuery(document).ready(function($) {
     SwitchServiceDoorLayer($('select[name="conf-service"]').val());
     SaveDialSlotMemory('service');
     CheckOverlap('service', 'filter');
-    // hj('event', 'Dial selector change position');
+    hj('event', 'Config click');
   });
   $('select[name="conf-filter"]').change(function() {
     SwitchFilterBoxLayer($('select[name="conf-filter"]').val());
     SaveDialSlotMemory('filter');
     CheckOverlap('filter', 'service');
-    // hj('event', 'Dial selector change position');
+    hj('event', 'Config click');
   });
   $('select[name="conf-jets-10"]').change(function() {
     SwitchHydroJetsLayer('10', $('select[name="conf-jets-10"]').val() - 1);
     hydroJetsSeats[10] = $('select[name="conf-jets-10"]').val() - 1;
-    // hj('event', 'Dial selector change seats');
+    hj('event', 'Config click');
   });
   $('select[name="conf-jets-20"]').change(function() {
     SwitchHydroJetsLayer('20', ($('select[name="conf-jets-20"]').val()) - 1);
     hydroJetsSeats[20] = $('select[name="conf-jets-20"]').val() - 1;
-    // hj('event', 'Dial selector change seats');
+    hj('event', 'Config click');
   });
 
   // Global vars

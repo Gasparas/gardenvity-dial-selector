@@ -1,7 +1,7 @@
 /***
 Dial Selector 2023
 ***/
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
   const model = "Config 6-8 Round Integrated"
   const ver = "v0.1";
   console.log(model, ver);
@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
   $('#menu-box-service').hide();
   $('#menu-box-jets').hide();
   $('#menu-box-filter').hide();
-  
+
   // ***
   function CladdingAndInsertSwitcher(woodColor, insertSize, insertColor) {
     SwitchInsertLayer(insertSize, insertColor);
@@ -111,65 +111,65 @@ jQuery(document).ready(function($) {
   // });
 
   // Thermowood Dark
-  $('.thermowood-dark-insert-color-ul li').eq(0).change(function() {
+  $('.thermowood-dark-insert-color-ul li').eq(0).change(function () {
     CladdingAndInsertSwitcher('WoodDark', insertSize, 'white');
   });
-  $('.thermowood-dark-insert-color-ul li').eq(1).change(function() {
+  $('.thermowood-dark-insert-color-ul li').eq(1).change(function () {
     CladdingAndInsertSwitcher('WoodDark', insertSize, 'grey');
   });
-  $('.thermowood-dark-insert-color-ul li').eq(2).change(function() {
+  $('.thermowood-dark-insert-color-ul li').eq(2).change(function () {
     CladdingAndInsertSwitcher('WoodDark', insertSize, 'gold');
   });
-  $('.thermowood-dark-insert-color-ul li').eq(3).change(function() {
+  $('.thermowood-dark-insert-color-ul li').eq(3).change(function () {
     CladdingAndInsertSwitcher('WoodDark', insertSize, 'blue');
   });
 
   // Thermowood Light
-  $('.thermowood-light-insert-color-ul li').eq(0).change(function() {
+  $('.thermowood-light-insert-color-ul li').eq(0).change(function () {
     CladdingAndInsertSwitcher('WoodLight', insertSize, 'white');
   });
-  $('.thermowood-light-insert-color-ul li').eq(1).change(function() {
+  $('.thermowood-light-insert-color-ul li').eq(1).change(function () {
     CladdingAndInsertSwitcher('WoodLight', insertSize, 'grey');
   });
-  $('.thermowood-light-insert-color-ul li').eq(2).change(function() {
+  $('.thermowood-light-insert-color-ul li').eq(2).change(function () {
     CladdingAndInsertSwitcher('WoodLight', insertSize, 'gold');
   });
-  $('.thermowood-light-insert-color-ul li').eq(3).change(function() {
+  $('.thermowood-light-insert-color-ul li').eq(3).change(function () {
     CladdingAndInsertSwitcher('WoodLight', insertSize, 'blue');
   });
 
   // Plastic Dark
-  $('.plastic-dark-insert-color-ul li').eq(0).change(function() {
+  $('.plastic-dark-insert-color-ul li').eq(0).change(function () {
     CladdingAndInsertSwitcher('PlasticDark', insertSize, 'white');
   });
-  $('.plastic-dark-insert-color-ul li').eq(1).change(function() {
+  $('.plastic-dark-insert-color-ul li').eq(1).change(function () {
     CladdingAndInsertSwitcher('PlasticDark', insertSize, 'grey');
   });
-  $('.plastic-dark-insert-color-ul li').eq(2).change(function() {
+  $('.plastic-dark-insert-color-ul li').eq(2).change(function () {
     CladdingAndInsertSwitcher('PlasticDark', insertSize, 'gold');
   });
-  $('.plastic-dark-insert-color-ul li').eq(3).change(function() {
+  $('.plastic-dark-insert-color-ul li').eq(3).change(function () {
     CladdingAndInsertSwitcher('PlasticDark', insertSize, 'blue');
   });
 
   // Air Jets
-  $('.air_jets_checkboxes-div ul li').eq(0).change(function() {
+  $('.air_jets_checkboxes-div ul li').eq(0).change(function () {
     SwitchAirJetsLayer('none');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.air_jets_checkboxes-div ul li').eq(1).change(function() {
+  $('.air_jets_checkboxes-div ul li').eq(1).change(function () {
     SwitchAirJetsLayer('12');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.air_jets_checkboxes-div ul li').eq(2).change(function() {
+  $('.air_jets_checkboxes-div ul li').eq(2).change(function () {
     SwitchAirJetsLayer('20');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
   // Hydro jets
-  $('.hydro_jets_checkboxes-div ul li').eq(0).change(function() {
+  $('.hydro_jets_checkboxes-div ul li').eq(0).change(function () {
     SwitchHydroJetsLayer('none', 0);
     ToggleServiceDoor();
     $('#menu-box-jets').hide();
@@ -177,7 +177,7 @@ jQuery(document).ready(function($) {
     $('#conf-jets-20').hide();
     ToggleMenuContainer();
   });
-  $('.hydro_jets_checkboxes-div ul li').eq(1).change(function() {
+  $('.hydro_jets_checkboxes-div ul li').eq(1).change(function () {
     SwitchHydroJetsLayer('10', hydroJetsSeats[10]);
     ToggleServiceDoor();
     $('#menu-box-jets').show();
@@ -187,7 +187,7 @@ jQuery(document).ready(function($) {
     $("label[for='conf-jets-20']").hide();
     ToggleMenuContainer();
   });
-  $('.hydro_jets_checkboxes-div ul li').eq(2).change(function() {
+  $('.hydro_jets_checkboxes-div ul li').eq(2).change(function () {
     SwitchHydroJetsLayer('20', hydroJetsSeats[20]);
     ToggleServiceDoor();
     $('#menu-box-jets').show();
@@ -199,66 +199,66 @@ jQuery(document).ready(function($) {
   });
 
   // LEDs
-  $('.leds_checkboxes-div ul li').eq(0).change(function() {
+  $('.leds_checkboxes-div ul li').eq(0).change(function () {
     SwitchLedLayer(1);
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.leds_checkboxes-div ul li').eq(1).change(function() {
+  $('.leds_checkboxes-div ul li').eq(1).change(function () {
     SwitchLedLayer(10);
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.leds_checkboxes-div ul li').eq(2).change(function() {
+  $('.leds_checkboxes-div ul li').eq(2).change(function () {
     SwitchLedLayer(0);
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
 
   // Water filter
-  $('.water_filter_checkboxes-div ul li').eq(0).change(function() {
+  $('.water_filter_checkboxes-div ul li').eq(0).change(function () {
     $('.conf-filter').hide();
     $('#menu-box-filter').hide();
     ToggleMenuContainer();
   });
-  $('.water_filter_checkboxes-div ul li').eq(1).change(function() {
+  $('.water_filter_checkboxes-div ul li').eq(1).change(function () {
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
-  $('.water_filter_checkboxes-div ul li').eq(2).change(function() {
+  $('.water_filter_checkboxes-div ul li').eq(2).change(function () {
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
-  $('.water_filter_checkboxes-div ul li').eq(3).change(function() {
+  $('.water_filter_checkboxes-div ul li').eq(3).change(function () {
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
 
   // Menus
-  $('select[name="conf-service"]').change(function() {
+  $('select[name="conf-service"]').change(function () {
     SwitchServiceDoorLayer($('select[name="conf-service"]').val());
     SaveDialSlotMemory('service');
     CheckOverlap('service', 'filter');
-    // hj('event', 'Dial selector change position');
+    hj('event', 'Config click');
   });
-  $('select[name="conf-filter"]').change(function() {
+  $('select[name="conf-filter"]').change(function () {
     SwitchFilterBoxLayer($('select[name="conf-filter"]').val());
     SaveDialSlotMemory('filter');
     CheckOverlap('filter', 'service');
-    // hj('event', 'Dial selector change position');
+    hj('event', 'Config click');
   });
-  $('select[name="conf-jets-10"]').change(function() {
+  $('select[name="conf-jets-10"]').change(function () {
     SwitchHydroJetsLayer('10', $('select[name="conf-jets-10"]').val() - 1);
     hydroJetsSeats[10] = $('select[name="conf-jets-10"]').val() - 1;
-    // hj('event', 'Dial selector change seats');
+    hj('event', 'Config click');
   });
-  $('select[name="conf-jets-20"]').change(function() {
+  $('select[name="conf-jets-20"]').change(function () {
     SwitchHydroJetsLayer('20', ($('select[name="conf-jets-20"]').val()) - 1);
     hydroJetsSeats[20] = $('select[name="conf-jets-20"]').val() - 1;
-    // hj('event', 'Dial selector change seats');
+    hj('event', 'Config click');
   });
 
   // Global vars
@@ -462,7 +462,7 @@ jQuery(document).ready(function($) {
   formobj.append(clonedata);
   var cloneobj = formobj.find('.custom-conf-main');
   var lblobj;
-  cloneobj.each(function() {
+  cloneobj.each(function () {
     lblobj = $(this).children('label');
     var lblval = lblobj.text();
     $(this).children().attr('name', '_custom_opt_data[' + lblval + '][]');
@@ -480,7 +480,7 @@ jQuery(document).ready(function($) {
   // Post to cart obj #2
   formobj.find('.custom-conf-data').css('display', 'none');
 
-  jQuery(document).on('change', '#conf-service', function(e) {
+  jQuery(document).on('change', '#conf-service', function (e) {
     formobj.find('#conf-service').removeAttr('selected');
     formobj.find('#conf-service option:selected').removeAttr('selected', false);
     if (jQuery(this).val() != '') {
@@ -489,7 +489,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  jQuery(document).on('change', '#conf-filter', function(e) {
+  jQuery(document).on('change', '#conf-filter', function (e) {
     formobj.find('#conf-filter').removeAttr('selected');
     formobj.find('#conf-filter option:selected').removeAttr('selected', false);
     if (jQuery(this).val() != '') {
@@ -498,7 +498,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  jQuery(document).on('click', '.pdf_button_print', function(e) {
+  jQuery(document).on('click', '.pdf_button_print', function (e) {
     var formobj = $('.wp-block-lazyblock-woocommerce-single-product-cart-bf form');
     formobj.append("<input type='hidden' name='cart_pdf_submit_data' class='cart_pdf_submit_data' value='1'>");
 
@@ -507,7 +507,7 @@ jQuery(document).ready(function($) {
   });
 
 
-  jQuery(document).on('click', '.single_add_to_cart_button', function(e) {
+  jQuery(document).on('click', '.single_add_to_cart_button', function (e) {
 
     var date = new Date();
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));

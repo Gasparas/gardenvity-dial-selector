@@ -299,7 +299,7 @@ jQuery(document).ready(function ($) {
     SaveDialSlotMemory('service');
     CheckOverlap('service', 'filter');
     // checkServiceRestriction();
-    //hj('event', 'Square Dial selector change position');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-filter"]').change(function () {
@@ -307,19 +307,19 @@ jQuery(document).ready(function ($) {
     SaveDialSlotMemory('filter');
     CheckOverlapFilter('filter', 'service');
     // checkFilterRestriction();
-    //hj('event', 'Square Dial selector change position');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-jets-10"]').change(function () {
     SwitchHydroJetsLayer('10', $('select[name="conf-jets-10"]').val() - 1);
     hydroJetsSeats[10] = $('select[name="conf-jets-10"]').val() - 1;
-    //hj('event', 'Square Dial selector change seats');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-jets-20"]').change(function () {
     SwitchHydroJetsLayer('20', ($('select[name="conf-jets-20"]').val()) - 1);
     hydroJetsSeats[20] = $('select[name="conf-jets-20"]').val() - 1;
-    //hj('event', 'Square Dial selector change seats');
+    hj('event', 'Config click');
   });
 
 
@@ -408,7 +408,7 @@ jQuery(document).ready(function ($) {
 
     // check restrictions, set heater image
     let element = $('select[name="conf-filter"]').val();
-    if ( !restrictedFilterPos.includes(element) ) {
+    if (!restrictedFilterPos.includes(element)) {
       ChangeHeaterOrientation('center');
       heaterOrientation = 'center';
     } else {

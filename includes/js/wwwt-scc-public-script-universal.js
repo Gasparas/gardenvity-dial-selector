@@ -291,7 +291,7 @@ jQuery(document).ready(function ($) {
     SaveDialSlotMemory('service');
     // CheckOverlap('service-door', 'filter');
     // checkServiceRestriction();
-    //hj('event', 'Square Dial selector change position');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-filter"]').change(function () {
@@ -299,19 +299,19 @@ jQuery(document).ready(function ($) {
     SaveDialSlotMemory('filter');
     // CheckOverlapFilter('filter', 'service');
     // checkFilterRestriction();
-    //hj('event', 'Square Dial selector change position');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-jets-10"]').change(function () {
     SwitchHydroJetsLayer('1', $('select[name="conf-jets-10"]').val());
     hydroJetsPatternGroup[1] = $('select[name="conf-jets-10"]').val();
-    //hj('event', 'Square Dial selector change seats');
+    hj('event', 'Config click');
   });
 
   $('select[name="conf-jets-20"]').change(function () {
     SwitchHydroJetsLayer('2', ($('select[name="conf-jets-20"]').val()));
     hydroJetsPatternGroup[2] = $('select[name="conf-jets-20"]').val();
-    //hj('event', 'Square Dial selector change seats');
+    hj('event', 'Config click');
   });
 
 
