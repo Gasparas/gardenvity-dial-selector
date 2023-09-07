@@ -243,7 +243,7 @@ jQuery(document).ready(function ($) {
     ToggleServiceDoorMenu()
   });
 
-  // LEDs
+  // LEDs Checkboxes
   $('.leds_checkboxes-div ul li').eq(0).change(function () {
     SwitchLedLayer('led-slot-1');
     ToggleServiceDoor();
@@ -265,6 +265,18 @@ jQuery(document).ready(function ($) {
       ToggleMenuContainer();
     }
   });
+
+  // LEDs TOggle
+  $('.leds_toggle_slots-div ul li').eq(0).change(function () {
+    ToggleLedLayer('led-slot-1');
+  });
+  $('.leds_toggle_slots-div ul li').eq(1).change(function () {
+    ToggleLedLayer('led-slot-2');
+  });
+  $('.leds_toggle_slots-div ul li').eq(2).change(function () {
+    ToggleLedLayer('led-slot-3');
+  });
+
 
   // Waterfilter
   $('.water_filter_checkboxes-div ul li').eq(0).change(function () {
@@ -501,6 +513,11 @@ jQuery(document).ready(function ($) {
       activeLeds[type] = 0;
       activeServiceDoorSystems[type] = 0;
     }
+  
+  }
+  function ToggleLedLayer(type) {
+    const img = document.querySelector('.conf-led-slot-1');
+    img.src = "/wp-content/uploads/" + php.folderName + "/" + type + ".svg";
   }
 
   /*

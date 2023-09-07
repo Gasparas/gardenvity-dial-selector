@@ -3,7 +3,7 @@
  * Plugin Name: Gardenvity Dial Selector & PDF download
  * Plugin URI:
  * Description: Gardenvity customization
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Gaspar Aleksa
  * Author URI: 
  * Text Domain: wwtscc
@@ -14,7 +14,8 @@
  * @author Gaspar Aleksa
  * 
  * Changes:
- * 1.1.3: Added new fields for fiberglass
+ * 1.1.4: LEDS toggle
+ * 1.1.3: New fields for fiberglass
  * 1.0.8: Fiberglass universal config
  */
 
