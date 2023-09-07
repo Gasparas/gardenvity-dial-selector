@@ -187,6 +187,10 @@ div.custom-conf-main>select {
   /* margin: 0 0 0 10px; */
 }
 
+#menu-box-service {
+  display: none;
+}
+
 .conf-menu-container .custom-conf-main select {
   color: #000;
 }

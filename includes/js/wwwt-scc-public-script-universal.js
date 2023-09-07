@@ -108,7 +108,7 @@ jQuery(document).ready(function ($) {
   if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
     activeServiceDoorSystems.airPlusHydroJets = 1;
     ToggleServiceDoor();
-    ToggleMenuContainer();
+    // ToggleMenuContainer();
   }
 
   /*
@@ -157,22 +157,28 @@ jQuery(document).ready(function ($) {
   });
 
   // Air Plus Hydro Jets
+
   $('.air_plus_hydro_jets_checkboxes-div ul li').eq(0).change(function () {
     SwitchAirPlusHydroJetsLayer('0');
-    ToggleServiceDoor();
-    ToggleMenuContainer();
+    // ToggleServiceDoor();
+    // ToggleMenuContainer();
   });
 
   $('.air_plus_hydro_jets_checkboxes-div ul li').eq(1).change(function () {
     SwitchAirPlusHydroJetsLayer('1');
-    ToggleServiceDoor();
-    ToggleMenuContainer();
+    // ToggleServiceDoor();
+    // ToggleMenuContainer();
   });
 
   $('.air_plus_hydro_jets_checkboxes-div ul li').eq(2).change(function () {
     SwitchAirPlusHydroJetsLayer('2');
-    ToggleServiceDoor();
-    ToggleMenuContainer();
+    // ToggleServiceDoor();
+    // ToggleMenuContainer();
+  });
+  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(3).change(function () {
+    SwitchAirPlusHydroJetsLayer('3');
+    // ToggleServiceDoor();
+    // ToggleMenuContainer();
   });
 
 
@@ -181,6 +187,7 @@ jQuery(document).ready(function ($) {
     SwitchAirJetsLayer('0');
     ToggleServiceDoor();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
     // console.log(this);
   });
 
@@ -188,12 +195,14 @@ jQuery(document).ready(function ($) {
     SwitchAirJetsLayer('1');
     ToggleServiceDoor();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
   });
 
   $('.air_jets_checkboxes-div ul li').eq(2).change(function () {
     SwitchAirJetsLayer('2');
     ToggleServiceDoor();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
   });
 
   // Hydro Jets
@@ -205,6 +214,7 @@ jQuery(document).ready(function ($) {
     $('#conf-jets-20').hide();
     // $('.conf-jets-menu').hide();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
   });
 
   $('.hydro_jets_checkboxes-div ul li').eq(1).change(function () {
@@ -217,6 +227,7 @@ jQuery(document).ready(function ($) {
     $("label[for='conf-jets-20']").hide();
     // $('.conf-jets-menu').show();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
   });
 
   $('.hydro_jets_checkboxes-div ul li').eq(2).change(function () {
@@ -229,23 +240,30 @@ jQuery(document).ready(function ($) {
     $("label[for='conf-jets-10']").hide();
     // $('.conf-jets-menu').show();
     ToggleMenuContainer();
+    ToggleServiceDoorMenu()
   });
 
   // LEDs
   $('.leds_checkboxes-div ul li').eq(0).change(function () {
     SwitchLedLayer('led-slot-1');
     ToggleServiceDoor();
-    ToggleMenuContainer();
+    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
+      ToggleMenuContainer();
+    }
   });
   $('.leds_checkboxes-div ul li').eq(1).change(function () {
     SwitchLedLayer('led-slot-2');
     ToggleServiceDoor();
-    ToggleMenuContainer();
+    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
+      ToggleMenuContainer();
+    }
   });
   $('.leds_checkboxes-div ul li').eq(2).change(function () {
     SwitchLedLayer('led-slot-3');
     ToggleServiceDoor();
-    ToggleMenuContainer();
+    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
+      ToggleMenuContainer();
+    }
   });
 
   // Waterfilter
@@ -360,13 +378,22 @@ jQuery(document).ready(function ($) {
   }
 
   function ToggleMenuContainer() {
-    // Hide menu container when all 3 menu boxes are hidden
-    if ($('#conf-menu-container').children(':hidden').length === 3) {
-      // console.log($('#conf-menu-container').children(':hidden').length), 'hide';
-      $('#conf-menu-container').css('opacity', '0');
+    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
+      if ($('#menu-box-filter').is(':hidden') && $('#menu-box-jets').is(':hidden')) {
+        $('#conf-menu-container').css('opacity', '0');
+      } else {
+        $('#conf-menu-container').css('opacity', '1');
+      }
     } else {
-      // console.log($('#conf-menu-container').children(':hidden').length, 'show');
-      $('#conf-menu-container').css('opacity', '1');
+
+      // Hide menu container when all 3 menu boxes are hidden
+      if ($('#conf-menu-container').children(':hidden').length === 3) {
+        // console.log($('#conf-menu-container').children(':hidden').length), 'hide';
+        $('#conf-menu-container').css('opacity', '0');
+      } else {
+        // console.log($('#conf-menu-container').children(':hidden').length, 'show');
+        $('#conf-menu-container').css('opacity', '1');
+      }
     }
   }
 
@@ -377,12 +404,26 @@ jQuery(document).ready(function ($) {
     function checkActive(slot) {
       return slot > 0;
     }
-    if (activeSystems.find(checkActive)) {
-      $('.conf-service').show();
-      $('#menu-box-service').show();
+
+    // Service door for a fiberglass model
+    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
+      if (activeSystems.find(checkActive)) {
+        $('.conf-service').show();
+        $('#menu-box-service').css('opacity', '0');
+        $('#menu-box-service').css('display', 'block');
+        // $('#menu-box-service').show();
+      } else {
+        $('.conf-service').hide();
+        // $('#menu-box-service').hide();
+      }
     } else {
-      $('.conf-service').hide();
-      $('#menu-box-service').hide();
+      if (activeSystems.find(checkActive)) {
+        $('.conf-service').show();
+        $('#menu-box-service').show();
+      } else {
+        $('.conf-service').hide();
+        $('#menu-box-service').hide();
+      }
     }
     //checkServiceRestriction();
   }
