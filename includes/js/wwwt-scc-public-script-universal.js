@@ -187,7 +187,6 @@ jQuery(document).ready(function ($) {
     SwitchAirJetsLayer('0');
     ToggleServiceDoor();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
     // console.log(this);
   });
 
@@ -195,14 +194,17 @@ jQuery(document).ready(function ($) {
     SwitchAirJetsLayer('1');
     ToggleServiceDoor();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
   });
 
   $('.air_jets_checkboxes-div ul li').eq(2).change(function () {
     SwitchAirJetsLayer('2');
     ToggleServiceDoor();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
+  });
+  $('.air_jets_checkboxes-div ul li').eq(3).change(function () {
+    SwitchAirJetsLayer('3');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
   });
 
   // Hydro Jets
@@ -214,7 +216,6 @@ jQuery(document).ready(function ($) {
     $('#conf-jets-20').hide();
     // $('.conf-jets-menu').hide();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
   });
 
   $('.hydro_jets_checkboxes-div ul li').eq(1).change(function () {
@@ -227,7 +228,6 @@ jQuery(document).ready(function ($) {
     $("label[for='conf-jets-20']").hide();
     // $('.conf-jets-menu').show();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
   });
 
   $('.hydro_jets_checkboxes-div ul li').eq(2).change(function () {
@@ -240,7 +240,6 @@ jQuery(document).ready(function ($) {
     $("label[for='conf-jets-10']").hide();
     // $('.conf-jets-menu').show();
     ToggleMenuContainer();
-    ToggleServiceDoorMenu()
   });
 
   // LEDs Checkboxes
@@ -266,15 +265,21 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  // LEDs TOggle
+  // LEDs Toggle
   $('.leds_toggle_slots-div ul li').eq(0).change(function () {
     ToggleLedLayer('led-slot-1');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
   });
   $('.leds_toggle_slots-div ul li').eq(1).change(function () {
     ToggleLedLayer('led-slot-2');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
   });
   $('.leds_toggle_slots-div ul li').eq(2).change(function () {
     ToggleLedLayer('led-slot-3');
+    ToggleServiceDoor();
+    ToggleMenuContainer();
   });
 
 
@@ -513,11 +518,18 @@ jQuery(document).ready(function ($) {
       activeLeds[type] = 0;
       activeServiceDoorSystems[type] = 0;
     }
-  
   }
+
   function ToggleLedLayer(type) {
+    // write DOM
     const img = document.querySelector('.conf-led-slot-1');
     img.src = "/wp-content/uploads/" + php.folderName + "/" + type + ".svg";
+    // write ServiceDoor toggle
+    if (type === 'led-slot-1') {
+      activeServiceDoorSystems['led-slot-1'] = 0;
+    } else {
+      activeServiceDoorSystems['led-slot-1'] = 1;
+    }
   }
 
   /*

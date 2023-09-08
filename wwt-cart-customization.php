@@ -3,7 +3,7 @@
  * Plugin Name: Gardenvity Dial Selector & PDF download
  * Plugin URI:
  * Description: Gardenvity customization
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: Gaspar Aleksa
  * Author URI: 
  * Text Domain: wwtscc

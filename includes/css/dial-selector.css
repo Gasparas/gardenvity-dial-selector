@@ -86,12 +86,6 @@ div.tc-container.water-filtration-details-div p {
   .dial-menus select {
     font-size: 13px !important;
   }
-
-  /* .price {
-    margin: 0 10px 10px 10px;
-    padding: 0 0 5px 0;
-    font-size: 27px;
-  } */
 }
 
 /*Dial Sel swiper gallery*/
@@ -104,11 +98,6 @@ div.tc-container.water-filtration-details-div p {
 }
 
 /**/
-div.custom-conf-main {
-  /* line-height: normal; */
-  /* background: #82848a; */
-}
-
 div.custom-conf-main>select {
   margin: 5px 0;
 }
@@ -137,15 +126,6 @@ div.custom-conf-main>select {
   width: 100%;
 }
 
-/*@media (max-width: 1440px) {
-	}
-
-	@media (min-width: 1441px) {
-		#conf-grid {
-			display: flex;
-			width: 100%;
-		}
-	}*/
 @media (max-width: 768px) {
   .wp-block-lazyblock-woocommerce-single-product-price {
     top: 86vw !important;
@@ -163,45 +143,18 @@ div.custom-conf-main>select {
   z-index: 10;
 }
 
-/* #liner {
-  opacity: 1;
-} */
-
-/* @media (max-width:959px) {
-  #liner {
-    opacity: 1;
-  }
-} */
-
 .conf-menu-container {
   font-size: 16px;
-  /* border-right: 2px solid #f1f1f1; */
-  /* background: #fbfbfb; */
-  /*border: 1px solid rgba(0, 0, 0, 0.035);*/
-  /*background-image: linear-gradient(to top, rgba(0, 0, 0, 0.01) 0, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.01) 100%);*/
-  /* padding-right: 0.5em; */
   opacity: 0;
   transition: opacity 0.2s;
   color: #FFFFFF;
   font-weight: 500;
-  /* margin: 0 0 0 10px; */
-}
-
-#menu-box-service {
-  display: none;
 }
 
 .conf-menu-container .custom-conf-main select {
   color: #000;
 }
 
-/* .conf-menu-container h4 {
-  margin: 10px 0;
-  font-size: 16px;
-  text-align: center;
-  color: #666666 !important;
-  font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
-} */
 .custom-conf-main {
   margin: 5px 4px;
   padding: 4px;
@@ -215,14 +168,11 @@ div.custom-conf-main>select {
 
 .conf-container {
   position: relative;
-  /*max-width: 600px;*/
-  /*height: 400px;*/
 }
 
 .conf-container img {
   max-width: 50vh;
   height: auto;
-  /* margin: auto; */
 }
 
 .conf-base {
