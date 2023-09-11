@@ -1,8 +1,5 @@
-/***
-Dial Selector 2023 
-***/
 jQuery(document).ready(function ($) {
-  const model = "Config Universal"
+  // const model = "Config Universal"
   // console.log(model);
 
   // Mobile Scroll switcher: Product photo <-> Dial Selector

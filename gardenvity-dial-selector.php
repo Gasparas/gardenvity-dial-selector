@@ -1,19 +1,20 @@
 <?php
 /**
- * Plugin Name: Gardenvity Dial Selector & PDF download
+ * Plugin Name: Gardenvity Dial Selector (& PDF download)
  * Plugin URI:
- * Description: Gardenvity customization
- * Version: 1.1.5
+ * Description: Gardenvity Dial Selector customization
+ * Version: 1.2.0
  * Author: Gaspar Aleksa
  * Author URI: 
- * Text Domain: wwtscc
+ * Text Domain: gards
  * Domain Path: languages
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @category Core
  * @author Gaspar Aleksa
  * 
  * Changes:
+ * 1.2.0: Global renanaming WWT -> GAR 
  * 1.1.4: LEDS toggle
  * 1.1.3: New fields for fiberglass
  * 1.0.8: Fiberglass universal config
@@ -82,27 +83,27 @@ add_action('admin_init', 'load_admin_core_code', 20);
 /**
  * Basic plugin definitions
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
-if (!defined('WWT_SCC_LIB_VER')) {
-  define('WWT_SCC_LIB_VER', '1.0.5'); //libraray version of js and css
+if (!defined('GAR_DS_LIB_VER')) {
+  define('GAR_DS_LIB_VER', '1.0.5'); //libraray version of js and css
 }
-if (!defined('WWT_SCC_DIR')) {
-  define('WWT_SCC_DIR', dirname(__FILE__)); // plugin dir
+if (!defined('GAR_DS_DIR')) {
+  define('GAR_DS_DIR', dirname(__FILE__)); // plugin dir
 }
-if (!defined('WWT_SCC_URL')) {
-  define('WWT_SCC_URL', plugin_dir_url(__FILE__)); // plugin url
+if (!defined('GAR_DS_URL')) {
+  define('GAR_DS_URL', plugin_dir_url(__FILE__)); // plugin url
 }
 
-if (!defined('WWT_SCC_INC_DIR')) {
-  define('WWT_SCC_INC_DIR', WWT_SCC_DIR . '/includes'); // Plugin include dir
+if (!defined('GAR_DS_INC_DIR')) {
+  define('GAR_DS_INC_DIR', GAR_DS_DIR . '/includes'); // Plugin include dir
 }
-if (!defined('WWT_SCC_INC_URL')) {
-  define('WWT_SCC_INC_URL', WWT_SCC_URL . 'includes'); // Plugin include url
+if (!defined('GAR_DS_INC_URL')) {
+  define('GAR_DS_INC_URL', GAR_DS_URL . 'includes'); // Plugin include url
 }
-if (!defined('WWT_SCC_ADMIN_DIR')) {
-  define('WWT_SSC_ADMIN_DIR', WWT_SCC_INC_DIR . '/admin'); // Plugin admin dir
+if (!defined('GAR_DS_ADMIN_DIR')) {
+  define('GAR_SSC_ADMIN_DIR', GAR_DS_INC_DIR . '/admin'); // Plugin admin dir
 }
 
 
@@ -111,22 +112,22 @@ if (!defined('WWT_SCC_ADMIN_DIR')) {
  *
  * This gets the plugin ready for translation.
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
-load_plugin_textdomain('wwt_scc', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+load_plugin_textdomain('GAR_DS', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 /**
  * Activation Hook
  *
  * Register plugin activation hook.
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
-register_activation_hook(__FILE__, 'wwt_esl_install');
+register_activation_hook(__FILE__, 'GAR_esl_install');
 
-function wwt_esl_install()
+function GAR_esl_install()
 {
 
 }
@@ -136,25 +137,25 @@ function wwt_esl_install()
  *
  * Register plugin deactivation hook.
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
-register_deactivation_hook(__FILE__, 'wwt_esl_uninstall');
+register_deactivation_hook(__FILE__, 'GAR_esl_uninstall');
 
-function wwt_esl_uninstall()
+function GAR_esl_uninstall()
 {
 
 }
 
 // Global variables
-global $wwt_esl_model, $wwt_scc_public, $wwt_scc_scripts;
+global $GAR_esl_model, $GAR_DS_public, $GAR_DS_scripts;
 
 
-include_once(WWT_SCC_INC_DIR . '/class-scc-scripts.php');
-$wwt_scc_scripts = new WWT_SCC_Scripts();
-$wwt_scc_scripts->add_hooks();
+include_once(GAR_DS_INC_DIR . '/gar-ds-scripts.php');
+$GAR_DS_scripts = new GAR_DS_Scripts();
+$GAR_DS_scripts->add_hooks();
 
 // Public class handles most of fronted functionalities of plugin
-include_once(WWT_SCC_INC_DIR . '/class-scc-public.php');
-$wwt_scc_public = new WWT_SCC_Public();
-$wwt_scc_public->add_hooks();
+include_once(GAR_DS_INC_DIR . '/gar-ds-public.php');
+$GAR_DS_public = new GAR_DS_Public();
+$GAR_DS_public->add_hooks();

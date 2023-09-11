@@ -8,11 +8,11 @@ if (!defined('ABSPATH'))
  *
  * Manage Public Class
  *
- * @package WWT Shop cart page customization
+ * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
 
-class WWT_SCC_Public
+class GAR_DS_Public
 {
 
 	public $model;
@@ -31,7 +31,7 @@ class WWT_SCC_Public
 	 * Add engraving text to cart item.
 	 */
 
-	public function wwt_scc_add_data_to_cart_item($cart_item_data, $product_id, $variation_id)
+	public function GAR_DS_add_data_to_cart_item($cart_item_data, $product_id, $variation_id)
 	{
 
 		$hydro_jets_text = (isset($_COOKIE['hydro_jets_text']) ? $_COOKIE['hydro_jets_text'] : '');
@@ -62,13 +62,13 @@ class WWT_SCC_Public
 		return $cart_item_data;
 	}
 
-	public function wwt_scc_display_data_cart($item_data, $cart_item)
+	public function GAR_DS_display_data_cart($item_data, $cart_item)
 	{
 
 		if (isset($cart_item['conf_jets']) && $cart_item['conf_jets'] != '') {
 			$key = get_field('dial_selector', 504)['hydro_jets_placement_pattern'];
 			$item_data[] = array(
-				'key' => __($key, 'wwt_scc'),
+				'key' => __($key, 'GAR_DS'),
 				'value' => wc_clean($cart_item['conf_jets']),
 				'display' => '',
 			);
@@ -77,7 +77,7 @@ class WWT_SCC_Public
 		if (isset($cart_item['conf_service']) && $cart_item['conf_service'] != '') {
 			$key = get_field('dial_selector', 504)['service_door_and_control_panel_position'];
 			$item_data[] = array(
-				'key' => __($key, 'wwt_scc'),
+				'key' => __($key, 'GAR_DS'),
 				'value' => wc_clean($cart_item['conf_service']),
 				'display' => '',
 			);
@@ -86,7 +86,7 @@ class WWT_SCC_Public
 		if (isset($cart_item['conf_filter']) && $cart_item['conf_filter'] != '') {
 			$key = get_field('dial_selector', 504)['filter_enclosure_position'];
 			$item_data[] = array(
-				'key' => __($key, 'wwt_scc'),
+				'key' => __($key, 'GAR_DS'),
 				'value' => wc_clean($cart_item['conf_filter']),
 				'display' => '',
 			);
@@ -99,22 +99,22 @@ class WWT_SCC_Public
 	 * Add engraving text to order.
 	 */
 
-	public function wwt_scc_data_order_items($item, $cart_item_key, $values, $order)
+	public function GAR_DS_data_order_items($item, $cart_item_key, $values, $order)
 	{
 
 		if (isset($values['conf_jets'])) {
 			$key = get_field('dial_selector', 504)['hydro_jets_placement_pattern'];
-			$item->add_meta_data(__($key, 'wwt_scc'), $values['conf_jets']);
+			$item->add_meta_data(__($key, 'GAR_DS'), $values['conf_jets']);
 		}
 
 		if (!empty($values['conf_service'])) {
 			$key = get_field('dial_selector', 504)['service_door_and_control_panel_position'];
-			$item->add_meta_data(__($key, 'wwt_scc'), $values['conf_service']);
+			$item->add_meta_data(__($key, 'GAR_DS'), $values['conf_service']);
 		}
 
 		if (!empty($values['conf_filter'])) {
 			$key = get_field('dial_selector', 504)['filter_enclosure_position'];
-			$item->add_meta_data(__($key, 'wwt_scc'), $values['conf_filter']);
+			$item->add_meta_data(__($key, 'GAR_DS'), $values['conf_filter']);
 		}
 	}
 
@@ -186,15 +186,15 @@ class WWT_SCC_Public
 	/**
 	 * Adding Hooks
 	 *
-	 * @package WWT Shop cart page customization
+	 * @package Gardenvity Dial Selector
 	 * @since 1.0.0
 	 */
 	function add_hooks()
 	{
 		// Add Custom Cart Item Data in WooCommerce
-		add_filter('woocommerce_add_cart_item_data', array($this, 'wwt_scc_add_data_to_cart_item'), 10, 3);
-		add_filter('woocommerce_get_item_data', array($this, 'wwt_scc_display_data_cart'), 99, 2);
-		add_action('woocommerce_checkout_create_order_line_item', array($this, 'wwt_scc_data_order_items'), 99, 4);
+		add_filter('woocommerce_add_cart_item_data', array($this, 'GAR_DS_add_data_to_cart_item'), 10, 3);
+		add_filter('woocommerce_get_item_data', array($this, 'GAR_DS_display_data_cart'), 99, 2);
+		add_action('woocommerce_checkout_create_order_line_item', array($this, 'GAR_DS_data_order_items'), 99, 4);
 		// add_filter('woocommerce_display_item_meta', array($this, 'modify_woocommerce_display_item_meta'), 99, 3);
 		
 		// Add Downlaod PDF functionality
