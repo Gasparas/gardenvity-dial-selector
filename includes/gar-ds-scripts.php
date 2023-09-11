@@ -34,8 +34,8 @@ class GAR_DS_Scripts
 		$tag_names = wp_list_pluck($post_tags, 'name');
 
 		if (in_array('universal-config', $tag_names)) {
-			// JS
-			wp_register_script('gar-ds-script-universal', GAR_DS_INC_URL . '/js/gar-ds-script-universal.js', array('jquery'), GAR_DS_LIB_VER, true);
+			// JS Webpack bundle
+			wp_register_script('gar-ds-script-universal', GAR_DS_URL . '/dist/bundle.js', array('jquery'), GAR_DS_LIB_VER, true);
 			wp_enqueue_script('gar-ds-script-universal');
 			// Pass PHP data to JS			
 			$dataToBePassed = array(

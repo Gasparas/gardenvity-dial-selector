@@ -3,7 +3,7 @@
  * Plugin Name: Gardenvity Dial Selector (& PDF download)
  * Plugin URI:
  * Description: Gardenvity Dial Selector (EPO customization)
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Gaspar Aleksa
  * Author URI: 
  * Text Domain: gards
@@ -14,6 +14,7 @@
  * @author Gaspar Aleksa
  * 
  * Changes:
+ * 1.3.0: NPM, Webpack, Babel
  * 1.2.0: Global renanaming WWT -> GAR 
  * 1.1.4: LEDS toggle
  * 1.1.3: New fields for fiberglass
