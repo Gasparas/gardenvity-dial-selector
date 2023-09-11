@@ -475,7 +475,8 @@ jQuery(document).ready(function ($) {
 
   // Post to cart obj #1
   var clonedata = $('.custom-conf-data').clone();
-  formobj = $('.wp-block-lazyblock-woocommerce-single-product-cart-bf form');
+  var formobj = $('form.cart');
+  console.log(formobj);
   formobj.append(clonedata);
   var cloneobj = formobj.find('.custom-conf-main');
   var lblobj;
@@ -514,15 +515,6 @@ jQuery(document).ready(function ($) {
       formobj.find('#conf-filter option[value="' + filter + '"]').attr('selected', true);
     }
   });
-
-  jQuery(document).on('click', '.pdf_button_print', function (e) {
-    var formobj = $('.wp-block-lazyblock-woocommerce-single-product-cart-bf form');
-    formobj.append("<input type='hidden' name='cart_pdf_submit_data' class='cart_pdf_submit_data' value='1'>");
-
-    jQuery('.single_add_to_cart_button').click();
-
-  });
-
 
   jQuery(document).on('click', '.single_add_to_cart_button', function (e) {
 
@@ -575,5 +567,7 @@ jQuery(document).ready(function ($) {
       }
     }
   });
+
+  
 
 });

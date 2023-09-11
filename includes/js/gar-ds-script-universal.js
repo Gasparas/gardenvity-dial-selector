@@ -1,61 +1,16 @@
-jQuery(document).ready(function ($) {
-  // const model = "Config Universal"
-  // console.log(model);
+// Webpack enabled
+// import $ from 'jquery';
+import { scrollSwith } from './modules/scroll-switch';
+import { ToggleServiceDoor } from './modules/toggle-service-door';
+import { activeServiceDoorSystems } from './modules/data';
+
+
+$ = jQuery;
+
+$(function () {
 
   // Mobile Scroll switcher: Product photo <-> Dial Selector
-  scrollSwither();
-
-  addEventListener("resize", (event) => {
-    scrollSwither();
-  });
-
-  function scrollSwither() {
-    // console.log('JS Switcher');
-    let topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
-    let productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-    let imageOffSet = topOffSet - productImageHeight;
-
-    if (window.innerWidth < 960) {
-
-      if (document.documentElement.scrollTop > topOffSet) {
-        $('.woocommerce-product-gallery__image').css('display', 'none');
-        $('#liner').css('display', 'block');
-        topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
-        productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-        imageOffSet = topOffSet - productImageHeight;
-
-      } else if (document.documentElement.scrollTop < imageOffSet) {
-        $('.woocommerce-product-gallery__image').css('display', 'block');
-        $('#liner').css('display', 'none');
-        topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
-        productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-        imageOffSet = topOffSet - productImageHeight;
-      }
-
-      window.onscroll = function () {
-        if (document.documentElement.scrollTop > topOffSet) {
-          $('.woocommerce-product-gallery__image').css('display', 'none');
-          $('#liner').css('display', 'block');
-          topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
-          productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-          imageOffSet = topOffSet - productImageHeight;
-        } else if (document.documentElement.scrollTop < imageOffSet) {
-          $('.woocommerce-product-gallery__image').css('display', 'block');
-          $('#liner').css('display', 'none');
-          topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
-          productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-          imageOffSet = topOffSet - productImageHeight;
-        }
-      }
-
-    } else {
-
-      $('.woocommerce-product-gallery__image').css('display', 'block');
-      $('#liner').css('display', 'block');
-      window.onscroll = null;
-
-    }
-  }
+  scrollSwith();
 
   // Init show/hide
   $('#menu-box-service').hide();
@@ -81,14 +36,14 @@ jQuery(document).ready(function ($) {
     'led-slot-2': 0,
     'led-slot-3': 0
   };
-  let activeServiceDoorSystems = {
-    'led-slot-1': 0,
-    'led-slot-2': 0,
-    'led-slot-3': 0,
-    airJets: 0,
-    hydroJets: 0,
-    airPlusHydroJets: 0
-  };
+  // let activeServiceDoorSystems = {
+  //   'led-slot-1': 0,
+  //   'led-slot-2': 0,
+  //   'led-slot-3': 0,
+  //   airJets: 0,
+  //   hydroJets: 0,
+  //   airPlusHydroJets: 0
+  // };
   let restrictedPos = {
     service: ['none'],
     filter: ['none']
@@ -409,38 +364,7 @@ jQuery(document).ready(function ($) {
         $('#conf-menu-container').css('opacity', '1');
       }
     }
-  }
-
-  function ToggleServiceDoor() {
-    activeSystems = Object.values(activeServiceDoorSystems);
-    console.log(activeSystems);
-
-    function checkActive(slot) {
-      return slot > 0;
-    }
-
-    // Service door for a fiberglass model
-    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
-      if (activeSystems.find(checkActive)) {
-        $('.conf-service').show();
-        $('#menu-box-service').css('opacity', '0');
-        $('#menu-box-service').css('display', 'block');
-        // $('#menu-box-service').show();
-      } else {
-        $('.conf-service').hide();
-        // $('#menu-box-service').hide();
-      }
-    } else {
-      if (activeSystems.find(checkActive)) {
-        $('.conf-service').show();
-        $('#menu-box-service').show();
-      } else {
-        $('.conf-service').hide();
-        $('#menu-box-service').hide();
-      }
-    }
-    //checkServiceRestriction();
-  }
+  }  
 
   function SaveDialSlotMemory(type) {
     dialSlotMemory[type].unshift($('select[name="conf-' + type + '"]').val());
@@ -537,7 +461,7 @@ jQuery(document).ready(function ($) {
 
   // Post to cart obj #1
   var clonedata = $('.custom-conf-data').clone();
-  formobj = $('.wp-block-lazyblock-woocommerce-single-product-cart-bf form');
+  const formobj = $('form.cart');
   formobj.append(clonedata);
   var cloneobj = formobj.find('.custom-conf-main');
   var lblobj;
@@ -547,11 +471,11 @@ jQuery(document).ready(function ($) {
     $(this).children().attr('name', '_custom_opt_data[' + lblval + '][]');
   });
 
-  tenjetsobj = $('#conf-jets-10').parent();
-  tenjetsobj.find('.conf-jets-10').hide();
+  let tenjetsobj = $('#conf-jets-10').parent();
+   tenjetsobj.find('.conf-jets-10').hide();
 
-  twentyjetsobj = $('#conf-jets-20').parent();
-  twentyjetsobj.find('.conf-jets-20').hide();
+  let twentyjetsobj = $('#conf-jets-20').parent();
+   twentyjetsobj.find('.conf-jets-20').hide();
 
   formobj.find('.custom-conf-data').append("<input type='hidden' name='conf_jets' class='conf_jets' value='1'>");
   formobj.find('.custom-conf-data').append("<input type='hidden' name='conf_jets_type' class='conf_jets_type' value='10_jets'>");
@@ -575,14 +499,6 @@ jQuery(document).ready(function ($) {
       var filter = jQuery('option:selected', jQuery(this)).val();
       formobj.find('#conf-filter option[value="' + filter + '"]').attr('selected', true);
     }
-  });
-
-  jQuery(document).on('click', '.pdf_button_print', function (e) {
-    var formobj = $('.wp-block-lazyblock-woocommerce-single-product-cart-bf form');
-    formobj.append("<input type='hidden' name='cart_pdf_submit_data' class='cart_pdf_submit_data' value='1'>");
-
-    jQuery('.single_add_to_cart_button').click();
-
   });
 
 
