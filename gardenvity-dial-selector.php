@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Gardenvity Dial Selector (& PDF download)
  * Plugin URI:
- * Description: Gardenvity Dial Selector customization
+ * Description: Gardenvity Dial Selector (EPO customization)
  * Version: 1.2.0
  * Author: Gaspar Aleksa
  * Author URI: 
@@ -86,8 +86,17 @@ add_action('admin_init', 'load_admin_core_code', 20);
  * @package Gardenvity Dial Selector
  * @since 1.0.0
  */
+
+// Get Plugin Version
+if (!function_exists('get_plugin_data')) {
+  require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+}
+
+$plugin_data = get_plugin_data('wp-content/plugins/gardenvity-dial-selector/gardenvity-dial-selector.php');
+$plugin_version = $plugin_data['Version'];
+
 if (!defined('GAR_DS_LIB_VER')) {
-  define('GAR_DS_LIB_VER', '1.0.5'); //libraray version of js and css
+  define('GAR_DS_LIB_VER', $plugin_version); //libraray version of js and css
 }
 if (!defined('GAR_DS_DIR')) {
   define('GAR_DS_DIR', dirname(__FILE__)); // plugin dir
@@ -95,7 +104,6 @@ if (!defined('GAR_DS_DIR')) {
 if (!defined('GAR_DS_URL')) {
   define('GAR_DS_URL', plugin_dir_url(__FILE__)); // plugin url
 }
-
 if (!defined('GAR_DS_INC_DIR')) {
   define('GAR_DS_INC_DIR', GAR_DS_DIR . '/includes'); // Plugin include dir
 }
@@ -103,9 +111,8 @@ if (!defined('GAR_DS_INC_URL')) {
   define('GAR_DS_INC_URL', GAR_DS_URL . 'includes'); // Plugin include url
 }
 if (!defined('GAR_DS_ADMIN_DIR')) {
-  define('GAR_SSC_ADMIN_DIR', GAR_DS_INC_DIR . '/admin'); // Plugin admin dir
+  define('GAR_DS_ADMIN_DIR', GAR_DS_INC_DIR . '/admin'); // Plugin admin dir
 }
-
 
 /**
  * Load Text Domain
