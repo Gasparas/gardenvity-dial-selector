@@ -17,3 +17,16 @@ export let dialSlotMemory = {
   service: [php.serviceDoorDefault, php.serviceDoorDefault],
   filter: [php.filterDefault, php.filterDefault]
 }
+
+export let hydroJetsPatternGroup = {
+  1: 0,
+  2: 0
+};
+
+export let insertColorMemory = {
+  Current: 'color-' + php.linerColorStart
+};
+
+// Qattro External Specific
+let restrictedFilterPos = ['1', '11'];
+let heaterOrientation = 'center';

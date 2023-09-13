@@ -1,10 +1,10 @@
 // Webpack enabled
 // import $ from 'jquery';
 import { scrollSwith } from './modules/scroll-switch';
-import { serviceDoorMenuLogic, filterMenuLogic } from './modules/menus-logic';
+import * as menu from './modules/menus-logic';
+import * as data from './modules/data';
 import { ToggleServiceDoor } from './modules/toggle-service-door';
 import { SwitchLedLayer, ToggleLedLayer } from './modules/leds-logic';
-import { activeServiceDoorSystems, dialSlotMemory } from './modules/data';
 
 
 $ = jQuery;
@@ -15,35 +15,15 @@ $(function () {
   scrollSwith();
 
   // Menu Logic
-  serviceDoorMenuLogic();
-  filterMenuLogic();
+  menu.serviceDoorMenuLogic();
+  menu.filterMenuLogic();
+  menu.hydroJetsGroupOneMenuLogic();
+  menu.hydroJetsGroupTwoMenuLogic();
 
   // Init show/hide
   $('#menu-box-service').hide();
   $('#menu-box-jets').hide();
   $('#menu-box-filter').hide();
-
-  /*
-  ** Data
-  */
-
-  let insertColorMemory = {
-    Current: 'color-' + php.linerColorStart
-  };
-
-  let hydroJetsPatternGroup = {
-    1: 0,
-    2: 0
-  };
-
-  let restrictedPos = {
-    service: ['none'],
-    filter: ['none']
-  };
-
-  // Qattro External Specific
-  let restrictedFilterPos = ['1', '11'];
-  let heaterOrientation = 'center';
 
   /*
   ** Buttons
@@ -54,7 +34,7 @@ $(function () {
 
   function CladdingAndInsertSwitcher(woodColor, insertColor) {
     SwitchInsertLayer(insertColor);
-    insertColorMemory[woodColor] = insertColor;
+    data.insertColorMemory[woodColor] = insertColor;
   }
 
   function restoreSlectedButton(index, element) {
@@ -67,7 +47,7 @@ $(function () {
       insertColors.push(key);
     }
 
-    const current = insertColors.indexOf(insertColorMemory.Current);
+    const current = insertColors.indexOf(data.insertColorMemory.Current);
 
     $(linerColorsUl[index].querySelectorAll('li')[current]).find('label').trigger('click');
   }
@@ -90,32 +70,32 @@ $(function () {
   });
 
   // Air Jets
-  $('.air_jets_checkboxes-div ul li').eq(0).change(function () {
+  $('.air_jets_checkboxes-div ul li').eq(0).on("change", function () {
     SwitchAirJetsLayer('0');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
 
-  $('.air_jets_checkboxes-div ul li').eq(1).change(function () {
+  $('.air_jets_checkboxes-div ul li').eq(1).on("change", function () {
     SwitchAirJetsLayer('1');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
 
-  $('.air_jets_checkboxes-div ul li').eq(2).change(function () {
+  $('.air_jets_checkboxes-div ul li').eq(2).on("change", function () {
     SwitchAirJetsLayer('2');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.air_jets_checkboxes-div ul li').eq(3).change(function () {
+  $('.air_jets_checkboxes-div ul li').eq(3).on("change", function () {
     SwitchAirJetsLayer('3');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
 
   // Hydro Jets
-  $('.hydro_jets_checkboxes-div ul li').eq(0).change(function () {
-    SwitchHydroJetsLayer('0', 0);
+  $('.hydro_jets_checkboxes-div ul li').eq(0).on("change", function () {
+    menu.SwitchHydroJetsLayer('0', 0);
     ToggleServiceDoor();
     $('#menu-box-jets').hide();
     $('#conf-jets-10').hide();
@@ -123,8 +103,8 @@ $(function () {
     ToggleMenuContainer();
   });
 
-  $('.hydro_jets_checkboxes-div ul li').eq(1).change(function () {
-    SwitchHydroJetsLayer('1', hydroJetsPatternGroup[1]);
+  $('.hydro_jets_checkboxes-div ul li').eq(1).on("change", function () {
+    menu.SwitchHydroJetsLayer('1', data.hydroJetsPatternGroup[1]);
     ToggleServiceDoor();
     $('#menu-box-jets').show();
     $('#conf-jets-10').show();
@@ -134,8 +114,8 @@ $(function () {
     ToggleMenuContainer();
   });
 
-  $('.hydro_jets_checkboxes-div ul li').eq(2).change(function () {
-    SwitchHydroJetsLayer('2', hydroJetsPatternGroup[2]);
+  $('.hydro_jets_checkboxes-div ul li').eq(2).on("change", function () {
+    menu.SwitchHydroJetsLayer('2', data.hydroJetsPatternGroup[2]);
     ToggleServiceDoor();
     $('#menu-box-jets').show();
     $('#conf-jets-20').show();
@@ -146,81 +126,67 @@ $(function () {
   });
 
   // LEDs Checkboxes
-  $('.leds_checkboxes-div ul li').eq(0).change(function () {
+  $('.leds_checkboxes-div ul li').eq(0).on("change", function () {
     SwitchLedLayer('led-slot-1');
     ToggleServiceDoor();
+    ToggleMenuContainer();
   });
-  $('.leds_checkboxes-div ul li').eq(1).change(function () {
+  $('.leds_checkboxes-div ul li').eq(1).on("change", function () {
     SwitchLedLayer('led-slot-2');
     ToggleServiceDoor();
+    ToggleMenuContainer();
   });
-  $('.leds_checkboxes-div ul li').eq(2).change(function () {
+  $('.leds_checkboxes-div ul li').eq(2).on("change", function () {
     SwitchLedLayer('led-slot-3');
     ToggleServiceDoor();
+    ToggleMenuContainer();
   });
 
   // LEDs Toggle
-  $('.leds_toggle_slots-div ul li').eq(0).change(function () {
+  $('.leds_toggle_slots-div ul li').eq(0).on("change", function () {
     ToggleLedLayer('led-slot-1');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.leds_toggle_slots-div ul li').eq(1).change(function () {
+  $('.leds_toggle_slots-div ul li').eq(1).on("change", function () {
     ToggleLedLayer('led-slot-2');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
-  $('.leds_toggle_slots-div ul li').eq(2).change(function () {
+  $('.leds_toggle_slots-div ul li').eq(2).on("change", function () {
     ToggleLedLayer('led-slot-3');
     ToggleServiceDoor();
     ToggleMenuContainer();
   });
 
-
   // Waterfilter
-  $('.water_filter_checkboxes-div ul li').eq(0).change(function () {
+  $('.water_filter_checkboxes-div ul li').eq(0).on("change", function () {
     // ChangeHeaterOrientation('center');
     $('.conf-filter').hide();
     $('#menu-box-filter').hide();
     ToggleMenuContainer();
   });
 
-  $('.water_filter_checkboxes-div ul li').eq(1).change(function () {
+  $('.water_filter_checkboxes-div ul li').eq(1).on("change", function () {
     // ChangeHeaterOrientation(heaterOrientation);
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
 
-  $('.water_filter_checkboxes-div ul li').eq(2).change(function () {
+  $('.water_filter_checkboxes-div ul li').eq(2).on("change", function () {
     // ChangeHeaterOrientation(heaterOrientation);
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
 
-  $('.water_filter_checkboxes-div ul li').eq(3).change(function () {
+  $('.water_filter_checkboxes-div ul li').eq(3).on("change", function () {
     // ChangeHeaterOrientation(heaterOrientation);
     $('.conf-filter').show();
     $('#menu-box-filter').show();
     ToggleMenuContainer();
   });
-
-  /*
-  ** Menus
-  */
-  $('select[name="conf-jets-10"]').on("change", function () {
-    SwitchHydroJetsLayer('1', $('select[name="conf-jets-10"]').val());
-    hydroJetsPatternGroup[1] = $('select[name="conf-jets-10"]').val();
-    hj('event', 'Config click');
-  });
-
-  $('select[name="conf-jets-20"]').on("change", function () {
-    SwitchHydroJetsLayer('2', ($('select[name="conf-jets-20"]').val()));
-    hydroJetsPatternGroup[2] = $('select[name="conf-jets-20"]').val();
-    hj('event', 'Config click');
-  });
-
 
   /*
   ** Modules
@@ -231,38 +197,6 @@ $(function () {
   //   const img = document.querySelector('.conf-heater');
   //   img.src = "/wp-content/uploads/dial-selector-round-x/dial-selector-uk-heater-" + type + ".svg";
   // }
-
-  function CheckOverlapFilter(type_1, type_2) {
-    if (dialSlotMemory.service[0] === dialSlotMemory.filter[0]) {
-      currentServicePos = dialSlotMemory['service'][0];
-      if (currentServicePos != '6') {
-        // write DOM
-        const img = document.querySelector('.conf-service');
-        img.src = "/wp-content/uploads/dial-selector-round-x/dial-selector-uk-service-" + 6 + ".svg";
-        dialSlotMemory['service'].unshift('6');
-        $('select[name="conf-service"]').val(6);
-      } else {
-        const img = document.querySelector('.conf-service');
-        img.src = "/wp-content/uploads/dial-selector-round-x/dial-selector-uk-service-" + 3 + ".svg";
-        dialSlotMemory['service'].unshift('3');
-        $('select[name="conf-service"]').val(3);
-      }
-    }
-  }
-
-  function CheckOverlap(type_1, type_2) {
-    if (dialSlotMemory.service[0] === dialSlotMemory.filter[0]) {
-      const img_1 = document.querySelector('.conf-' + type_1);
-      img_1.src = "/wp-content/uploads/" + php.folderName + "/" + type_1 + "-" + dialSlotMemory[type_2][0] + ".svg";
-      $('select[name="conf-' + type_1 + '"]').val(dialSlotMemory[type_2][0]);
-
-      const img_2 = document.querySelector('.conf-' + type_2);
-      img_2.src = "/wp-content/uploads/" + php.folderName + "/" + type_2 + "-" + dialSlotMemory[type_1][1] + ".svg";
-      $('select[name="conf-' + type_2 + '"]').val(dialSlotMemory[type_1][1]);
-      dialSlotMemory[type_2][0] = dialSlotMemory[type_1][1];
-      dialSlotMemory[type_2][1] = dialSlotMemory[type_1][0];
-    }
-  }
 
   function ToggleMenuContainer() {
     // Hide menu container when all 3 menu boxes are hidden
@@ -280,7 +214,7 @@ $(function () {
     const img = document.querySelector('.conf-base');
     img.src = "/wp-content/uploads/" + php.folderName + "/liner-" + color + ".jpg";
     // write global var
-    insertColorMemory.Current = color;
+    data.insertColorMemory.Current = color;
   }
 
   function SwitchAirJetsLayer(group) {
@@ -289,36 +223,14 @@ $(function () {
     img.src = "/wp-content/uploads/" + php.folderName + "/air-jets-" + group + ".svg";
     // write ServiceDoor toggle
     if (group === '0') {
-      activeServiceDoorSystems.airJets = 0;
+      data.activeServiceDoorSystems.airJets = 0;
     } else {
-      activeServiceDoorSystems.airJets = 1;
-    }
-  }
-
-  function SwitchAirPlusHydroJetsLayer(group) {
-    // write DOM
-    const img = document.querySelector('.conf-air-jets');
-    img.src = "/wp-content/uploads/" + php.folderName + "/air-jets-" + group + ".svg";
-    // write ServiceDoor toggle
-    activeServiceDoorSystems.airPlusHydroJets = 1;
-  }
-
-  function SwitchHydroJetsLayer(group, pattern) {
-    // write DOM
-    const img = document.querySelector('.conf-jets');
-    img.src = "/wp-content/uploads/" + php.folderName + "/hydro-jets-" + group + "-" + pattern + ".svg";
-    // write ServiceDoor toggle
-    if (group === '0') {
-      activeServiceDoorSystems.hydroJets = 0;
-    } else {
-      activeServiceDoorSystems.hydroJets = 1;
+      data.activeServiceDoorSystems.airJets = 1;
     }
   }
 
   /*
-  **
   ** Dial Select post to cart & Donwload PDF
-  **
   */
 
   // Post to cart obj #1
