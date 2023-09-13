@@ -4,7 +4,7 @@ import { scrollSwith } from './modules/scroll-switch';
 import { serviceDoorMenuLogic, filterMenuLogic } from './modules/menus-logic';
 import { ToggleServiceDoor } from './modules/toggle-service-door';
 import { SwitchLedLayer, ToggleLedLayer } from './modules/leds-logic';
-import { activeLeds, activeServiceDoorSystems, dialSlotMemory } from './modules/data';
+import { activeServiceDoorSystems, dialSlotMemory } from './modules/data';
 
 
 $ = jQuery;
@@ -44,12 +44,6 @@ $(function () {
   // Qattro External Specific
   let restrictedFilterPos = ['1', '11'];
   let heaterOrientation = 'center';
-
-  // Init Service door for a fiberglass model
-  if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
-    activeServiceDoorSystems.airPlusHydroJets = 1;
-    ToggleServiceDoor();
-  }
 
   /*
   ** Buttons
@@ -94,24 +88,6 @@ $(function () {
       });
     }
   });
-
-  // Air Plus Hydro Jets
-
-  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(0).change(function () {
-    SwitchAirPlusHydroJetsLayer('0');
-  });
-
-  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(1).change(function () {
-    SwitchAirPlusHydroJetsLayer('1');
-  });
-
-  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(2).change(function () {
-    SwitchAirPlusHydroJetsLayer('2');
-  });
-  $('.air_plus_hydro_jets_checkboxes-div ul li').eq(3).change(function () {
-    SwitchAirPlusHydroJetsLayer('3');
-  });
-
 
   // Air Jets
   $('.air_jets_checkboxes-div ul li').eq(0).change(function () {
@@ -173,23 +149,14 @@ $(function () {
   $('.leds_checkboxes-div ul li').eq(0).change(function () {
     SwitchLedLayer('led-slot-1');
     ToggleServiceDoor();
-    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
-      ToggleMenuContainer();
-    }
   });
   $('.leds_checkboxes-div ul li').eq(1).change(function () {
     SwitchLedLayer('led-slot-2');
     ToggleServiceDoor();
-    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
-      ToggleMenuContainer();
-    }
   });
   $('.leds_checkboxes-div ul li').eq(2).change(function () {
     SwitchLedLayer('led-slot-3');
     ToggleServiceDoor();
-    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') == null) {
-      ToggleMenuContainer();
-    }
   });
 
   // LEDs Toggle
@@ -298,22 +265,13 @@ $(function () {
   }
 
   function ToggleMenuContainer() {
-    if (document.querySelector('.air_plus_hydro_jets_checkboxes-div') !== null) {
-      if ($('#menu-box-filter').is(':hidden') && $('#menu-box-jets').is(':hidden')) {
-        $('#conf-menu-container').css('opacity', '0');
-      } else {
-        $('#conf-menu-container').css('opacity', '1');
-      }
+    // Hide menu container when all 3 menu boxes are hidden
+    if ($('#conf-menu-container').children(':hidden').length === 3) {
+      // console.log($('#conf-menu-container').children(':hidden').length), 'hide';
+      $('#conf-menu-container').css('opacity', '0');
     } else {
-
-      // Hide menu container when all 3 menu boxes are hidden
-      if ($('#conf-menu-container').children(':hidden').length === 3) {
-        // console.log($('#conf-menu-container').children(':hidden').length), 'hide';
-        $('#conf-menu-container').css('opacity', '0');
-      } else {
-        // console.log($('#conf-menu-container').children(':hidden').length, 'show');
-        $('#conf-menu-container').css('opacity', '1');
-      }
+      // console.log($('#conf-menu-container').children(':hidden').length, 'show');
+      $('#conf-menu-container').css('opacity', '1');
     }
   }
 
