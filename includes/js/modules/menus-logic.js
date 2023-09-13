@@ -18,7 +18,11 @@ export const serviceDoorMenuLogic = () => {
 
       // log(dialSlotMemory);
 
-    } else if (position === "different") {
+    } else if (position === "2-10") {
+      SwitchServiceDoorLayer(data.dialSlotMemory.service[0]);
+      $('select[name="conf-service"]').val(data.dialSlotMemory.service[0]);
+      SaveDialSlotMemory('service');
+    } else if (position === "continue") {
       SwitchServiceDoorLayer($('select[name="conf-service"]').val());
       SaveDialSlotMemory('service');
 
@@ -42,7 +46,11 @@ export const filterMenuLogic = () => {
 
       // log(dialSlotMemory);
 
-    } else if (position === "different") {
+    } else if (position === "2-10") {
+      SwitchFilterBoxLayer(data.dialSlotMemory.filter[0]);
+      $('select[name="conf-filter"]').val(data.dialSlotMemory.filter[0]);
+      SaveDialSlotMemory('filter');
+    } else if (position === "continue") {
       SwitchFilterBoxLayer($('select[name="conf-filter"]').val());
       SaveDialSlotMemory('filter');
 
@@ -92,11 +100,11 @@ function checkDropdownValues() {
   const value2 = $('select[name="conf-filter"]').val();
 
   if (value1 === value2) {
-    // console.log('same');
     return "same";
+  } else if (data.positionRestrictionsArray.includes(value1) && data.positionRestrictionsArray.includes(value2)) {
+    return "2-10";
   } else {
-    // console.log('different');
-    return "different";
+    return "continue";
   }
 }
 

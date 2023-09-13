@@ -3,7 +3,7 @@
  * Plugin Name: Gardenvity Dial Selector (& PDF download)
  * Plugin URI:
  * Description: Gardenvity Dial Selector (EPO customization)
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author: Gaspar Aleksa
  * Author URI: 
  * Text Domain: gards
@@ -13,7 +13,8 @@
  * @category Core
  * @author Gaspar Aleksa
  * 
- * Changes:
+ * Change log:
+ * 1.3.2: Position restrictions
  * 1.3.1: Same position adjustment
  * 1.3.0: NPM, Webpack, Babel
  * 1.2.0: Global renanaming WWT -> GAR 
@@ -48,7 +49,7 @@ function load_admin_core_code()
     function render_custom_meta_box($post)
     {
       // Define an array of custom field names and labels
-      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default', 'filter_default', 'filter_position_range', 'service_position_range');
+      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default', 'filter_default', 'filter_position_range', 'service_position_range', 'position_restrictions');
 
       // Loop through the fields and display them
       foreach ($fields as $field_name) {
@@ -68,7 +69,7 @@ function load_admin_core_code()
     function save_custom_meta_box($post)
     {
       // Define the array of custom field names
-      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default', 'filter_default', 'filter_position_range', 'service_position_range');
+      $fields = array('images_folder_name', 'cladding_types', 'liner_colors', 'liner_default_color', 'hydro_jets_patterns_group_1', 'hydro_jets_patterns_group_2', 'service_door_default', 'filter_default', 'filter_position_range', 'service_position_range', 'position_restrictions');
 
       // Loop through the fields and save their values
       foreach ($fields as $field_name) {

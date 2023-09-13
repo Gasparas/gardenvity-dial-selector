@@ -45,6 +45,7 @@ class GAR_DS_Scripts
 				'linerColorStart' => get_post_meta(get_the_ID(), 'liner_default_color', true),	
 				'serviceDoorDefault' => get_post_meta(get_the_ID(), 'service_door_default', true),	
 				'filterDefault' => get_post_meta(get_the_ID(), 'filter_default', true),	
+				'positionRestrictions' => get_post_meta(get_the_ID(), 'position_restrictions', true),	
 			);
 			wp_add_inline_script('gar-ds-script-universal', 'const php = ' . json_encode($dataToBePassed), 'before');			
 		}

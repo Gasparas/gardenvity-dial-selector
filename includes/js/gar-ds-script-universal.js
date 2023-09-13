@@ -10,9 +10,14 @@ import { SwitchLedLayer, ToggleLedLayer } from './modules/leds-logic';
 $ = jQuery;
 
 $(function () {
+  console.log(data.positionRestrictionsArray);
 
   // Mobile Scroll switcher: Product photo <-> Dial Selector
   scrollSwith();
+  
+  addEventListener("resize", (event) => {
+    scrollSwith();
+  });
 
   // Menu Logic
   menu.serviceDoorMenuLogic();

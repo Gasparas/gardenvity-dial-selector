@@ -27,6 +27,8 @@ export let insertColorMemory = {
   Current: 'color-' + php.linerColorStart
 };
 
+export const positionRestrictionsArray = php.positionRestrictions.split(",").map(s => s.trim());
+
 // Qattro External Specific
 let restrictedFilterPos = ['1', '11'];
 let heaterOrientation = 'center';

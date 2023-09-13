@@ -3,11 +3,7 @@ export const scrollSwith = () => {
 
     let topOffSet = Math.round($('.heater-insulation-title-div').offset().top);
     let productImageHeight = $('.woocommerce-product-gallery__image > img').height();
-    let imageOffSet = topOffSet - productImageHeight;
-
-    addEventListener("resize", (event) => {
-        scrollSwith();
-      });
+    let imageOffSet = topOffSet - productImageHeight;    
 
     if (window.innerWidth < 960) {
 
