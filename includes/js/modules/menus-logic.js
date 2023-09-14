@@ -1,4 +1,5 @@
 import * as data from './data';
+import * as tracking from './tracking';
 
 $ = jQuery;
 
@@ -6,7 +7,7 @@ export const serviceDoorMenuLogic = () => {
 
   $('select[name="conf-service"]').on("change", function () {
     const position = checkDropdownValues();
-    hj('event', 'Config click');
+    tracking.Hotjar('Config click');
 
     if (position === "same") {
       SwitchFilterBoxLayer(data.dialSlotMemory.service[0]);
@@ -34,7 +35,7 @@ export const serviceDoorMenuLogic = () => {
 export const filterMenuLogic = () => {
   $('select[name="conf-filter"]').on("change", function () {
     const position = checkDropdownValues();
-    hj('event', 'Config click');
+    tracking.Hotjar('Config click');
 
     if (position === "same") {
       SwitchServiceDoorLayer(data.dialSlotMemory.filter[0]);
@@ -63,7 +64,7 @@ export const hydroJetsGroupOneMenuLogic = () => {
   $('select[name="conf-jets-10"]').on("change", function () {
     SwitchHydroJetsLayer('1', $('select[name="conf-jets-10"]').val());
     data.hydroJetsPatternGroup[1] = $('select[name="conf-jets-10"]').val();
-    hj('event', 'Config click');
+    tracking.Hotjar('Config click');
   });
 }
 
@@ -71,7 +72,7 @@ export const hydroJetsGroupTwoMenuLogic = () => {
   $('select[name="conf-jets-20"]').on("change", function () {
     SwitchHydroJetsLayer('2', ($('select[name="conf-jets-20"]').val()));
     data.hydroJetsPatternGroup[2] = $('select[name="conf-jets-20"]').val();
-    hj('event', 'Config click');
+    tracking.Hotjar('Config click');
   });
 }
 

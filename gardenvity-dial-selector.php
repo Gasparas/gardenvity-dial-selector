@@ -3,7 +3,7 @@
  * Plugin Name: Gardenvity Dial Selector (& PDF download)
  * Plugin URI:
  * Description: Gardenvity Dial Selector (EPO customization)
- * Version: 1.3.3
+ * Version: 1.3.6
  * Author: Gaspar Aleksa
  * Author URI: 
  * Text Domain: gards
@@ -14,6 +14,7 @@
  * @author Gaspar Aleksa
  * 
  * Change log:
+ * 1.3.4: tracking module
  * 1.3.3: Check 2, 10 restrictions
  * 1.3.2: Position restrictions
  * 1.3.1: Same position adjustment
