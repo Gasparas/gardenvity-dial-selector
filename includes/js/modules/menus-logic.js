@@ -70,7 +70,8 @@ export const hydroJetsGroupOneMenuLogic = () => {
 
 export const hydroJetsGroupTwoMenuLogic = () => {
   $('select[name="conf-jets-20"]').on("change", function () {
-    SwitchHydroJetsLayer('2', ($('select[name="conf-jets-20"]').val()));
+    const hydroLayer =  ($('select[name="conf-jets-20"]').val()) - 1;
+    SwitchHydroJetsLayer('2', hydroLayer);
     data.hydroJetsPatternGroup[2] = $('select[name="conf-jets-20"]').val();
     tracking.Hotjar('Config click');
   });
@@ -78,7 +79,7 @@ export const hydroJetsGroupTwoMenuLogic = () => {
 
 export const SwitchHydroJetsLayer = (group, pattern) => {
   // write DOM
-  // const img = ;
+  // pattern -= 1;
   document.querySelector('.conf-jets').src = "/wp-content/uploads/" + php.folderName + "/hydro-jets-" + group + "-" + pattern + ".svg";
   // write ServiceDoor toggle
   if (group === '0') {
