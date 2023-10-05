@@ -33,47 +33,7 @@ $(function () {
   /*
   ** Buttons
   */
-
-  let claddingTypesUl = document.querySelectorAll('.cladding-type-ul li label');
-  let linerColorsUl = document.querySelectorAll('.liner-color-ul');
-
-  function CladdingAndInsertSwitcher(woodColor, insertColor) {
-    SwitchInsertLayer(insertColor);
-    data.insertColorMemory[woodColor] = insertColor;
-  }
-
-  function restoreSlectedButton(index, element) {
-    var insertColors = [];
-    var keyName = 'color-';
-    var count = php.linerColors;
-
-    for (var i = 1; i <= count; i++) {
-      var key = keyName + i;
-      insertColors.push(key);
-    }
-
-    const current = insertColors.indexOf(data.insertColorMemory.Current);
-
-    $(linerColorsUl[index].querySelectorAll('li')[current]).find('label').trigger('click');
-  }
-
-  // Cladding
-  claddingTypesUl.forEach((element, index) => {
-    $(element).on('change', function () {
-      restoreSlectedButton(index);
-    });
-  });
-
-  // Liners
-  linerColorsUl.forEach(element => {
-    for (let i = 0; i < php.linerColors; i++) {
-      // buttons = ;
-      $(element.querySelectorAll('li')[i]).on('change', function () {
-        CladdingAndInsertSwitcher('Current', 'color-' + (i + 1));
-      });
-    }
-  });
-
+ 
   // Air Jets
   $('.air_jets_checkboxes-div ul li').eq(0).on("change", function () {
     SwitchAirJetsLayer('0');
