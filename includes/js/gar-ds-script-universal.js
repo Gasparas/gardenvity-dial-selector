@@ -33,6 +33,16 @@ $(function () {
   /*
   ** Buttons
   */
+
+  // Liners  
+  const linerColorsUl = document.querySelectorAll('.liner-color-ul');
+  linerColorsUl.forEach(element => {
+    for (let i = 0; i < php.linerColors; i++) {
+      $(element.querySelectorAll('li')[i]).on('change', function () {
+        SwitchInsertLayer(i+1);
+      });
+    }
+  });
  
   // Air Jets
   $('.air_jets_checkboxes-div ul li').eq(0).on("change", function () {
@@ -177,7 +187,7 @@ $(function () {
   function SwitchInsertLayer(color) {
     // write DOM
     const img = document.querySelector('.conf-base');
-    img.src = "/wp-content/uploads/" + php.folderName + "/liner-" + color + ".jpg";
+    img.src = "/wp-content/uploads/" + php.folderName + "/liner-color-" + color + ".jpg";
     // write global var
     data.insertColorMemory.Current = color;
   }
