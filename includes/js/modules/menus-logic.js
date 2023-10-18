@@ -62,7 +62,8 @@ export const filterMenuLogic = () => {
 
 export const hydroJetsGroupOneMenuLogic = () => {
   $('select[name="conf-jets-10"]').on("change", function () {
-    SwitchHydroJetsLayer('1', $('select[name="conf-jets-10"]').val()) - 1;
+    const hydroLayer =  ($('select[name="conf-jets-20"]').val()) - 1;
+    SwitchHydroJetsLayer('1', hydroLayer);
     data.hydroJetsPatternGroup[1] = $('select[name="conf-jets-10"]').val();
     tracking.Hotjar('Config click');
   });
