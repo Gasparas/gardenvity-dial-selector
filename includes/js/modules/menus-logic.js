@@ -62,18 +62,20 @@ export const filterMenuLogic = () => {
 
 export const hydroJetsGroupOneMenuLogic = () => {
   $('select[name="conf-jets-10"]').on("change", function () {
-    const hydroLayer =  ($('select[name="conf-jets-20"]').val()) - 1;
-    SwitchHydroJetsLayer('1', hydroLayer);
-    data.hydroJetsPatternGroup[1] = $('select[name="conf-jets-10"]').val();
+    const selectValue = $('select[name="conf-jets-10"]').val()
+    const hydroLayerNum = selectValue - 1;
+    SwitchHydroJetsLayer('1', hydroLayerNum);
+    data.hydroJetsPatternGroup[1] = hydroLayerNum;
     tracking.Hotjar('Config click');
   });
 }
 
 export const hydroJetsGroupTwoMenuLogic = () => {
   $('select[name="conf-jets-20"]').on("change", function () {
-    const hydroLayer =  ($('select[name="conf-jets-20"]').val()) - 1;
-    SwitchHydroJetsLayer('2', hydroLayer);
-    data.hydroJetsPatternGroup[2] = $('select[name="conf-jets-20"]').val();
+    const selectValue = $('select[name="conf-jets-20"]').val();
+    const hydroLayerNum =  selectValue - 1;
+    SwitchHydroJetsLayer('2', hydroLayerNum);
+    data.hydroJetsPatternGroup[2] = hydroLayerNum;
     tracking.Hotjar('Config click');
   });
 }
