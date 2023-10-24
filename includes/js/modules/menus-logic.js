@@ -73,7 +73,7 @@ export const hydroJetsGroupOneMenuLogic = () => {
 export const hydroJetsGroupTwoMenuLogic = () => {
   $('select[name="conf-jets-20"]').on("change", function () {
     const selectValue = $('select[name="conf-jets-20"]').val();
-    const hydroLayerNum =  selectValue - 1;
+    const hydroLayerNum = selectValue - 1;
     SwitchHydroJetsLayer('2', hydroLayerNum);
     data.hydroJetsPatternGroup[2] = hydroLayerNum;
     tracking.Hotjar('Config click');
@@ -90,6 +90,12 @@ export const SwitchHydroJetsLayer = (group, pattern) => {
   } else {
     data.activeServiceDoorSystems.hydroJets = 1;
   }
+}
+
+export const SwitchFilterBoxLayer = (pos) => {
+  // write DOM
+  const img = document.querySelector('.conf-filter');
+  img.src = "/wp-content/uploads/" + php.folderName + "/filter-" + pos + ".svg";
 }
 
 // Helper functions
@@ -120,11 +126,6 @@ function SaveDialSlotMemory(type) {
   }
 }
 
-function SwitchFilterBoxLayer(pos) {
-  // write DOM
-  const img = document.querySelector('.conf-filter');
-  img.src = "/wp-content/uploads/" + php.folderName + "/filter-" + pos + ".svg";
-}
 
 function SwitchServiceDoorLayer(pos) {
   // write DOM

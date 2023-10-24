@@ -1,3 +1,7 @@
+export let activeFilterSystems = {
+  filterEnclosure: 0
+};
+
 export let activeServiceDoorSystems = {
   'led-slot-1': 0,
   'led-slot-2': 0,

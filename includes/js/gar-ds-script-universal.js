@@ -3,9 +3,7 @@
 import { scrollSwith } from './modules/scroll-switch';
 import * as menu from './modules/menus-logic';
 import * as data from './modules/data';
-import { ToggleServiceDoor } from './modules/toggle-service-door';
-import { SwitchLedLayer, ToggleLedLayer } from './modules/leds-logic';
-
+import { ToggleServiceDoor, ToggleFilterEnclosure, SwitchLedLayer, ToggleLedLayer } from './modules/layers-logic';
 
 $ = jQuery;
 
@@ -136,30 +134,27 @@ $(function () {
 
   // Waterfilter
   $('.water_filter_checkboxes-div ul li').eq(0).on("change", function () {
-    // ChangeHeaterOrientation('center');
-    $('.conf-filter').hide();
     $('#menu-box-filter').hide();
+    menu.SwitchFilterBoxLayer(0);
     ToggleMenuContainer();
   });
 
   $('.water_filter_checkboxes-div ul li').eq(1).on("change", function () {
-    // ChangeHeaterOrientation(heaterOrientation);
-    $('.conf-filter').show();
     $('#menu-box-filter').show();
+
+    menu.SwitchFilterBoxLayer(data.dialSlotMemory.filter[0]);
     ToggleMenuContainer();
   });
 
   $('.water_filter_checkboxes-div ul li').eq(2).on("change", function () {
-    // ChangeHeaterOrientation(heaterOrientation);
-    $('.conf-filter').show();
     $('#menu-box-filter').show();
+    menu.SwitchFilterBoxLayer(data.dialSlotMemory.filter[0]);
     ToggleMenuContainer();
   });
-
+  
   $('.water_filter_checkboxes-div ul li').eq(3).on("change", function () {
-    // ChangeHeaterOrientation(heaterOrientation);
-    $('.conf-filter').show();
-    $('#menu-box-filter').show();
+    $('#menu-box-filter').show();    
+    menu.SwitchFilterBoxLayer(data.dialSlotMemory.filter[0]);
     ToggleMenuContainer();
   });
 
